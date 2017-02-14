@@ -1,0 +1,12 @@
+D:\Immath\Immath\bin\Debug\Immath.exe.config
+D:\Immath\Immath\bin\Debug\Immath.exe
+D:\Immath\Immath\bin\Debug\Immath.pdb
+D:\Immath\Immath\obj\Debug\Immath.Properties.Resources.resources
+D:\Immath\Immath\obj\Debug\Immath.csproj.GenerateResource.Cache
+D:\Immath\Immath\obj\Debug\Immath.exe
+D:\Immath\Immath\obj\Debug\Immath.pdb
+D:\Immath\Immath\obj\Debug\Immath.csprojResolveAssemblyReference.cache
+D:\Immath\Immath\obj\Debug\Immath.Login.resources
+D:\Immath\Immath\obj\Debug\Immath.Mainmenu.resources
+D:\Immath\Immath\obj\Debug\Immath.Register_students.resources
+D:\Immath\Immath\obj\Debug\Immath.Register_teachers.resources
