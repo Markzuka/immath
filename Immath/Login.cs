@@ -40,7 +40,7 @@ namespace Immath
                     //MessageBox.Show(rdr.GetInt32(0) + ": "+ rdr["name"]);
                     this.Hide();
                     Mainmenu mainmenu = new Mainmenu(rdr,this);
-                    mainmenu.Show();
+                    mainmenu.ShowDialog();
                 }
                 else
                 {

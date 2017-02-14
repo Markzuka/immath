@@ -33,14 +33,15 @@
             this.button_logout = new System.Windows.Forms.Button();
             this.button_register_teacher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_edit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_register_student
             // 
             this.button_register_student.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_student.Location = new System.Drawing.Point(36, 66);
+            this.button_register_student.Location = new System.Drawing.Point(34, 61);
             this.button_register_student.Name = "button_register_student";
-            this.button_register_student.Size = new System.Drawing.Size(262, 118);
+            this.button_register_student.Size = new System.Drawing.Size(189, 62);
             this.button_register_student.TabIndex = 0;
             this.button_register_student.Text = "ลงทะเบียนนักเรียน";
             this.button_register_student.UseVisualStyleBackColor = true;
@@ -59,9 +60,9 @@
             // button_register_teacher
             // 
             this.button_register_teacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_teacher.Location = new System.Drawing.Point(351, 66);
+            this.button_register_teacher.Location = new System.Drawing.Point(394, 61);
             this.button_register_teacher.Name = "button_register_teacher";
-            this.button_register_teacher.Size = new System.Drawing.Size(262, 118);
+            this.button_register_teacher.Size = new System.Drawing.Size(237, 51);
             this.button_register_teacher.TabIndex = 2;
             this.button_register_teacher.Text = "ลงทะเบียนครู";
             this.button_register_teacher.UseVisualStyleBackColor = true;
@@ -76,10 +77,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Login as : อาจารย์";
             // 
+            // button_edit
+            // 
+            this.button_edit.Location = new System.Drawing.Point(394, 12);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(105, 43);
+            this.button_edit.TabIndex = 4;
+            this.button_edit.Text = "Edit User info";
+            this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
+            // 
             // Mainmenu
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(643, 314);
+            this.Controls.Add(this.button_edit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_register_teacher);
             this.Controls.Add(this.button_logout);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Button button_logout;
         private System.Windows.Forms.Button button_register_teacher;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_edit;
     }
 }

@@ -12,8 +12,8 @@ namespace Immath
 {
     public partial class Mainmenu : Form
     {
-        private Login _login = new Login();
-        private MySqlDataReader _login_info;
+        public Login _login = new Login();
+        public MySqlDataReader _login_info;
         
         public Mainmenu(MySqlDataReader login_info,Login login)
         {
@@ -21,7 +21,14 @@ namespace Immath
             _login_info = login_info;
             _login = login;
             label1.Text = label1.Text + " " + _login_info["Name"];
-            
+            if (_login_info["Auth"].ToString() == "admin")
+            {
+                button_register_teacher.Enabled = true;
+            }
+            else
+            {
+                button_register_teacher.Enabled = false;
+            }
            
         }
 
@@ -36,7 +43,7 @@ namespace Immath
             _login.clear_password();
         }
 
-        private void button_logout_Click(object sender, EventArgs e)
+        public void button_logout_Click(object sender, EventArgs e)
         {
             this.Hide();
             _login.Show();
@@ -46,15 +53,23 @@ namespace Immath
         private void button_register_student_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Register_students _register_students = new Register_students(_login_info,this);
-            _register_students.Show();
+            Register_students _register_students = new Register_students(this);       
+            _register_students.ShowDialog();
         }
 
         private void button_register_teacher_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Register_teachers _register_teachers = new Register_teachers(_login_info,this);
-            _register_teachers.Show();
+            Register_teachers _register_teachers = new Register_teachers(this);
+            _register_teachers.ShowDialog();
+        }
+
+        private void button_edit_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            Edit_user _edit_user = new Edit_user(this);
+            _edit_user.ShowDialog();
         }
     }
 }

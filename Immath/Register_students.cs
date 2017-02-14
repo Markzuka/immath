@@ -15,10 +15,10 @@ namespace Immath
     {
         private Mainmenu _mainmenu;
         private MySqlDataReader _login_info;
-        public Register_students(MySqlDataReader login_info, Mainmenu mainmenu)
+        public Register_students(Mainmenu mainmenu)
         {
             InitializeComponent();
-            _login_info = login_info;
+            _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
         }
 

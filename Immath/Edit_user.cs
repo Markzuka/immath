@@ -11,29 +11,32 @@ using System.Windows.Forms;
 
 namespace Immath
 {
-    public partial class Register_teachers : Form
+    public partial class Edit_user : Form
     {
         private MySqlDataReader _login_info;
         private Mainmenu _mainmenu;
-        public Register_teachers(Mainmenu mainmenu)
+        public Edit_user(Mainmenu mainmenu)
         {
             InitializeComponent();
-            _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
-    }
+            _login_info = _mainmenu._login_info;
+            textBox1.Text = _login_info["Username"].ToString();
+            textBox2.Text = _login_info["Password"].ToString();
+            textBox3.Text = _login_info["Name"].ToString();
+        }
 
-        private void Register_teachers_Load(object sender, EventArgs e)
+        private void Edit_user_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Register_teachers_FormClosed(object sender, FormClosedEventArgs e)
+        private void Edit_user_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            _mainmenu.Show();  
+            _mainmenu.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_edit_user_Click(object sender, EventArgs e)
         {
             string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
             MySqlConnection conn = null;
@@ -42,16 +45,17 @@ namespace Immath
             {
                 conn = new MySqlConnection(connection);
                 conn.Open();
-                string SQL = "insert into users(Username,Password,Name,Auth) Values(?Username,?Password,?Name,?Auth)";
+                string SQL = "UPDATE users SET Username=?Username,Password=?Password,Name=?Name where id =?id";
+       
                 MySqlCommand command = new MySqlCommand(SQL, conn);
                 command.Parameters.Add("?Username", textBox1.Text);
-                command.Parameters.Add("?Password", "immath555");
-                command.Parameters.Add("?Name", textBox2.Text);
-                command.Parameters.Add("?Auth", "user");
+                command.Parameters.Add("?Password", textBox2.Text);
+                command.Parameters.Add("?Name", textBox3.Text);
+                command.Parameters.Add("?id", _login_info["id"]);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Register complete!");
-                textBox1.Text = "";
-                textBox2.Text = "";
+                MessageBox.Show("update complete!");
+                this.Hide();
+                _mainmenu.button_logout_Click(null,null);
             }
             catch (Exception ex)
             {
