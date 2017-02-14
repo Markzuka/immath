@@ -10,3 +10,4 @@ D:\Immath\Immath\obj\Debug\Immath.Mainmenu.resources
 D:\Immath\Immath\obj\Debug\Immath.Register_students.resources
 D:\Immath\Immath\obj\Debug\Immath.Register_teachers.resources
 D:\immath\Immath\obj\Debug\Immath.Edit_user.resources
+D:\immath\Immath\obj\Debug\Immath.csprojResolveAssemblyReference.cache
