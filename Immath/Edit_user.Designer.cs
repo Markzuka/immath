@@ -36,6 +36,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button_edit_user = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +91,7 @@
             // 
             // button_edit_user
             // 
-            this.button_edit_user.Location = new System.Drawing.Point(163, 166);
+            this.button_edit_user.Location = new System.Drawing.Point(172, 208);
             this.button_edit_user.Name = "button_edit_user";
             this.button_edit_user.Size = new System.Drawing.Size(120, 32);
             this.button_edit_user.TabIndex = 6;
@@ -97,11 +99,29 @@
             this.button_edit_user.UseVisualStyleBackColor = true;
             this.button_edit_user.Click += new System.EventHandler(this.button_edit_user_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 164);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "ชื่อเล่น";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(119, 164);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(210, 20);
+            this.textBox4.TabIndex = 8;
+            // 
             // Edit_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 210);
+            this.ClientSize = new System.Drawing.Size(370, 268);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button_edit_user);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -110,6 +130,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Edit_user";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit_user";
@@ -129,5 +150,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button_edit_user;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

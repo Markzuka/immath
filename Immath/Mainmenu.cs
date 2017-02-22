@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.Resources;
 namespace Immath
 {
     public partial class Mainmenu : Form
     {
         public Login _login = new Login();
         public MySqlDataReader _login_info;
-        
+        public Register_students _register_students;
+        public Register_teachers _register_teachers;
+        public Edit_user _edit_user;
         public Mainmenu(MySqlDataReader login_info,Login login)
         {
             InitializeComponent();
@@ -29,7 +33,9 @@ namespace Immath
             {
                 button_register_teacher.Enabled = false;
             }
-           
+            _register_students = new Register_students(this);
+            _register_teachers = new Register_teachers(this);
+            _edit_user = new Edit_user(this);
         }
 
         private void Mainmenu_Load(object sender, EventArgs e)
@@ -53,14 +59,13 @@ namespace Immath
         private void button_register_student_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Register_students _register_students = new Register_students(this);       
+            _register_students.clear_content();
             _register_students.ShowDialog();
         }
 
         private void button_register_teacher_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Register_teachers _register_teachers = new Register_teachers(this);
             _register_teachers.ShowDialog();
         }
 
@@ -68,8 +73,14 @@ namespace Immath
         {
             
             this.Hide();
-            Edit_user _edit_user = new Edit_user(this);
             _edit_user.ShowDialog();
+        }
+
+        private void button_bill_Click(object sender, EventArgs e)
+        {
+            ResXResourceWriter resx = new ResXResourceWriter(@".\bill_no.resx");
+
+           
         }
     }
 }

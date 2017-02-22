@@ -34,12 +34,13 @@
             this.button_register_teacher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button_edit = new System.Windows.Forms.Button();
+            this.button_bill = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_register_student
             // 
             this.button_register_student.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_student.Location = new System.Drawing.Point(34, 61);
+            this.button_register_student.Location = new System.Drawing.Point(78, 61);
             this.button_register_student.Name = "button_register_student";
             this.button_register_student.Size = new System.Drawing.Size(189, 62);
             this.button_register_student.TabIndex = 0;
@@ -60,9 +61,9 @@
             // button_register_teacher
             // 
             this.button_register_teacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_teacher.Location = new System.Drawing.Point(394, 61);
+            this.button_register_teacher.Location = new System.Drawing.Point(328, 61);
             this.button_register_teacher.Name = "button_register_teacher";
-            this.button_register_teacher.Size = new System.Drawing.Size(237, 51);
+            this.button_register_teacher.Size = new System.Drawing.Size(237, 62);
             this.button_register_teacher.TabIndex = 2;
             this.button_register_teacher.Text = "ลงทะเบียนครู";
             this.button_register_teacher.UseVisualStyleBackColor = true;
@@ -87,16 +88,29 @@
             this.button_edit.UseVisualStyleBackColor = true;
             this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
             // 
+            // button_bill
+            // 
+            this.button_bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button_bill.Location = new System.Drawing.Point(78, 141);
+            this.button_bill.Name = "button_bill";
+            this.button_bill.Size = new System.Drawing.Size(189, 69);
+            this.button_bill.TabIndex = 5;
+            this.button_bill.Text = "ลงทะเบียนการสอน";
+            this.button_bill.UseVisualStyleBackColor = true;
+            this.button_bill.Click += new System.EventHandler(this.button_bill_Click);
+            // 
             // Mainmenu
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(643, 314);
+            this.ClientSize = new System.Drawing.Size(643, 283);
+            this.Controls.Add(this.button_bill);
             this.Controls.Add(this.button_edit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_register_teacher);
             this.Controls.Add(this.button_logout);
             this.Controls.Add(this.button_register_student);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Mainmenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Mainmenu_Closed);
@@ -113,5 +127,6 @@
         private System.Windows.Forms.Button button_register_teacher;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_edit;
+        private System.Windows.Forms.Button button_bill;
     }
 }

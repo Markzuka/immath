@@ -77,5 +77,11 @@ namespace Immath
 
             }
         }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+            Environment.Exit(0);
+        }
     }
 }

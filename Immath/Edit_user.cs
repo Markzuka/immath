@@ -23,6 +23,7 @@ namespace Immath
             textBox1.Text = _login_info["Username"].ToString();
             textBox2.Text = _login_info["Password"].ToString();
             textBox3.Text = _login_info["Name"].ToString();
+            textBox4.Text = _login_info["Nickname"].ToString();
         }
 
         private void Edit_user_Load(object sender, EventArgs e)
@@ -45,12 +46,13 @@ namespace Immath
             {
                 conn = new MySqlConnection(connection);
                 conn.Open();
-                string SQL = "UPDATE users SET Username=?Username,Password=?Password,Name=?Name where id =?id";
+                string SQL = "UPDATE users SET Username=?Username,Password=?Password,Name=?Name,Nickname=?Nickname where id =?id";
        
                 MySqlCommand command = new MySqlCommand(SQL, conn);
                 command.Parameters.Add("?Username", textBox1.Text);
                 command.Parameters.Add("?Password", textBox2.Text);
                 command.Parameters.Add("?Name", textBox3.Text);
+                command.Parameters.Add("?Nickname", textBox4.Text);
                 command.Parameters.Add("?id", _login_info["id"]);
                 command.ExecuteNonQuery();
                 MessageBox.Show("update complete!");
