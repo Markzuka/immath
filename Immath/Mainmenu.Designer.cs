@@ -40,10 +40,10 @@
             // button_register_student
             // 
             this.button_register_student.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_student.Location = new System.Drawing.Point(78, 61);
+            this.button_register_student.Location = new System.Drawing.Point(45, 72);
             this.button_register_student.Name = "button_register_student";
             this.button_register_student.Size = new System.Drawing.Size(189, 62);
-            this.button_register_student.TabIndex = 0;
+            this.button_register_student.TabIndex = 1;
             this.button_register_student.Text = "ลงทะเบียนนักเรียน";
             this.button_register_student.UseVisualStyleBackColor = true;
             this.button_register_student.Click += new System.EventHandler(this.button_register_student_Click);
@@ -53,7 +53,7 @@
             this.button_logout.Location = new System.Drawing.Point(518, 12);
             this.button_logout.Name = "button_logout";
             this.button_logout.Size = new System.Drawing.Size(113, 43);
-            this.button_logout.TabIndex = 1;
+            this.button_logout.TabIndex = 0;
             this.button_logout.Text = "Logout";
             this.button_logout.UseVisualStyleBackColor = true;
             this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
@@ -61,10 +61,10 @@
             // button_register_teacher
             // 
             this.button_register_teacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_register_teacher.Location = new System.Drawing.Point(328, 61);
+            this.button_register_teacher.Location = new System.Drawing.Point(497, 61);
             this.button_register_teacher.Name = "button_register_teacher";
-            this.button_register_teacher.Size = new System.Drawing.Size(237, 62);
-            this.button_register_teacher.TabIndex = 2;
+            this.button_register_teacher.Size = new System.Drawing.Size(134, 62);
+            this.button_register_teacher.TabIndex = 4;
             this.button_register_teacher.Text = "ลงทะเบียนครู";
             this.button_register_teacher.UseVisualStyleBackColor = true;
             this.button_register_teacher.Click += new System.EventHandler(this.button_register_teacher_Click);
@@ -75,7 +75,7 @@
             this.label1.Location = new System.Drawing.Point(42, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Login as : อาจารย์";
             // 
             // button_edit
@@ -83,7 +83,7 @@
             this.button_edit.Location = new System.Drawing.Point(394, 12);
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(105, 43);
-            this.button_edit.TabIndex = 4;
+            this.button_edit.TabIndex = 3;
             this.button_edit.Text = "Edit User info";
             this.button_edit.UseVisualStyleBackColor = true;
             this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
@@ -91,10 +91,10 @@
             // button_bill
             // 
             this.button_bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button_bill.Location = new System.Drawing.Point(78, 141);
+            this.button_bill.Location = new System.Drawing.Point(250, 72);
             this.button_bill.Name = "button_bill";
-            this.button_bill.Size = new System.Drawing.Size(189, 69);
-            this.button_bill.TabIndex = 5;
+            this.button_bill.Size = new System.Drawing.Size(189, 62);
+            this.button_bill.TabIndex = 2;
             this.button_bill.Text = "ลงทะเบียนการสอน";
             this.button_bill.UseVisualStyleBackColor = true;
             this.button_bill.Click += new System.EventHandler(this.button_bill_Click);

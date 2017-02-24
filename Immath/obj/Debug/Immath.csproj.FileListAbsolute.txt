@@ -51,4 +51,4 @@ D:\Immath\Immath\bin\Debug\AForge.Video.Kinect.xml
 D:\Immath\Immath\bin\Debug\AForge.Video.VFW.xml
 D:\Immath\Immath\bin\Debug\AForge.Video.Ximea.xml
 D:\Immath\Immath\bin\Debug\AForge.Vision.xml
-D:\immath\Immath\obj\Debug\Immath.bill_no.resources
+D:\Immath\Immath\obj\Debug\Immath.Bill.resources

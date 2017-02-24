@@ -59,7 +59,7 @@
             this.label1.Location = new System.Drawing.Point(27, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Username";
             // 
             // label2
@@ -68,7 +68,7 @@
             this.label2.Location = new System.Drawing.Point(27, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 5;
             this.label2.Text = "ชื่อ - สกุล";
             // 
             // label3
@@ -77,7 +77,7 @@
             this.label3.Location = new System.Drawing.Point(78, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 7;
             this.label3.Text = "หมายเหตุ Password ครั้งแรกจะเป็น immath555";
             // 
             // button1
@@ -85,7 +85,7 @@
             this.button1.Location = new System.Drawing.Point(128, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 40);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Create";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -104,7 +104,7 @@
             this.textBox3.Location = new System.Drawing.Point(102, 104);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(142, 20);
-            this.textBox3.TabIndex = 7;
+            this.textBox3.TabIndex = 2;
             // 
             // Register_teachers
             // 

@@ -42,18 +42,20 @@ namespace Immath
             {
                 conn = new MySqlConnection(connection);
                 conn.Open();
-                string SQL = "insert into users(Username,Password,Name,Auth,Nickname) Values(?Username,?Password,?Name,?Auth,?Nickname)";
+                string SQL = "insert into users(Username,Password,Name,Auth,Nickname,moneytype) Values(?Username,?Password,?Name,?Auth,?Nickname,?moneytype)";
                 MySqlCommand command = new MySqlCommand(SQL, conn);
                 command.Parameters.Add("?Username", textBox1.Text);
                 command.Parameters.Add("?Password", "immath555");
                 command.Parameters.Add("?Name", textBox2.Text);
                 command.Parameters.Add("?Auth", "user");
                 command.Parameters.Add("?Nickname", textBox3.Text);
+                command.Parameters.Add("?moneytype", 1);
                 command.ExecuteNonQuery();
                 MessageBox.Show("Register complete!");
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
+                conn.Close();
             }
             catch (Exception ex)
             {

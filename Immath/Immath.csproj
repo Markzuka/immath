@@ -141,6 +141,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill.Designer.cs">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit_user.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,12 +179,9 @@
     <Compile Include="Register_teachers.Designer.cs">
       <DependentUpon>Register_teachers.cs</DependentUpon>
     </Compile>
-    <Compile Include="bill_no.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bill_no.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <EmbeddedResource Include="Bill.resx">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit_user.resx">
       <DependentUpon>Edit_user.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,11 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Register_teachers.resx">
       <DependentUpon>Register_teachers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="bill_no.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>bill_no.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

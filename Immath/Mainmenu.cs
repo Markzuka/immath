@@ -19,6 +19,7 @@ namespace Immath
         public Register_students _register_students;
         public Register_teachers _register_teachers;
         public Edit_user _edit_user;
+        public Bill _bill;
         public Mainmenu(MySqlDataReader login_info,Login login)
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace Immath
             _register_students = new Register_students(this);
             _register_teachers = new Register_teachers(this);
             _edit_user = new Edit_user(this);
+            _bill = new Bill(this);
         }
 
         private void Mainmenu_Load(object sender, EventArgs e)
@@ -78,7 +80,9 @@ namespace Immath
 
         private void button_bill_Click(object sender, EventArgs e)
         {
-            ResXResourceWriter resx = new ResXResourceWriter(@".\bill_no.resx");
+            this.Hide();
+
+            _bill.ShowDialog();
 
            
         }
