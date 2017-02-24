@@ -142,7 +142,7 @@ namespace Immath
                     command.Parameters.Add("?Titlename", comboBox_Titlename.Text);
                     command.Parameters.Add("?Nickname", textBox_Nickname.Text);
                     command.Parameters.Add("?Sex", comboBox_Sex.Text);                   
-                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd", UsaCulture));
+                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
                     command.Parameters.Add("?DreamJob", textBox_DreamJob.Text);
                     command.Parameters.Add("?Tel", textBox_Tel.Text);
                     command.Parameters.Add("?Email", textBox_Email.Text);
@@ -190,7 +190,7 @@ namespace Immath
                     command.Parameters.Add("?Nickname", textBox_Nickname.Text);
                     command.Parameters.Add("?Sex", comboBox_Sex.Text);
                     command.Parameters.Add("?Code", textbox_Code.Text);
-                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd", UsaCulture));
+                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
                     command.Parameters.Add("?DreamJob", textBox_DreamJob.Text);
                     command.Parameters.Add("?Tel", textBox_Tel.Text);
                     command.Parameters.Add("?Email", textBox_Email.Text);
