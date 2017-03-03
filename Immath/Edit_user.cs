@@ -15,6 +15,9 @@ namespace Immath
     {
         private MySqlDataReader _login_info;
         private Mainmenu _mainmenu;
+        public string connection = null;
+        public MySqlConnection conn = null;
+        public MySqlDataReader rdr = null;
         public Edit_user(Mainmenu mainmenu)
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace Immath
             textBox2.Text = _login_info["Password"].ToString();
             textBox3.Text = _login_info["Name"].ToString();
             textBox4.Text = _login_info["Nickname"].ToString();
+            connection = _mainmenu.connection;
         }
 
         private void Edit_user_Load(object sender, EventArgs e)
@@ -39,9 +43,6 @@ namespace Immath
 
         private void button_edit_user_Click(object sender, EventArgs e)
         {
-            string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
-            MySqlConnection conn = null;
-            MySqlDataReader rdr = null;
             try
             {
                 conn = new MySqlConnection(connection);
@@ -49,11 +50,11 @@ namespace Immath
                 string SQL = "UPDATE users SET Username=?Username,Password=?Password,Name=?Name,Nickname=?Nickname where id =?id";
        
                 MySqlCommand command = new MySqlCommand(SQL, conn);
-                command.Parameters.Add("?Username", textBox1.Text);
-                command.Parameters.Add("?Password", textBox2.Text);
-                command.Parameters.Add("?Name", textBox3.Text);
-                command.Parameters.Add("?Nickname", textBox4.Text);
-                command.Parameters.Add("?id", _login_info["id"]);
+                command.Parameters.AddWithValue("?Username", textBox1.Text);
+                command.Parameters.AddWithValue("?Password", textBox2.Text);
+                command.Parameters.AddWithValue("?Name", textBox3.Text);
+                command.Parameters.AddWithValue("?Nickname", textBox4.Text);
+                command.Parameters.AddWithValue("?id", _login_info["id"]);
                 command.ExecuteNonQuery();
                 MessageBox.Show("update complete!");
                 this.Hide();

@@ -732,9 +732,9 @@
             // button_save
             // 
             this.button_save.BackColor = System.Drawing.Color.Blue;
-            this.button_save.Location = new System.Drawing.Point(44, 71);
+            this.button_save.Location = new System.Drawing.Point(16, 71);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(115, 45);
+            this.button_save.Size = new System.Drawing.Size(81, 45);
             this.button_save.TabIndex = 76;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = false;
@@ -743,9 +743,9 @@
             // button_findbycode
             // 
             this.button_findbycode.BackColor = System.Drawing.Color.Lime;
-            this.button_findbycode.Location = new System.Drawing.Point(165, 72);
+            this.button_findbycode.Location = new System.Drawing.Point(104, 72);
             this.button_findbycode.Name = "button_findbycode";
-            this.button_findbycode.Size = new System.Drawing.Size(108, 44);
+            this.button_findbycode.Size = new System.Drawing.Size(78, 44);
             this.button_findbycode.TabIndex = 75;
             this.button_findbycode.Text = "Find code";
             this.button_findbycode.UseVisualStyleBackColor = false;
@@ -780,9 +780,9 @@
             // button_clear
             // 
             this.button_clear.BackColor = System.Drawing.Color.Red;
-            this.button_clear.Location = new System.Drawing.Point(279, 71);
+            this.button_clear.Location = new System.Drawing.Point(197, 72);
             this.button_clear.Name = "button_clear";
-            this.button_clear.Size = new System.Drawing.Size(98, 45);
+            this.button_clear.Size = new System.Drawing.Size(77, 45);
             this.button_clear.TabIndex = 78;
             this.button_clear.Text = "Clear";
             this.button_clear.UseVisualStyleBackColor = false;

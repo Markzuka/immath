@@ -41,6 +41,14 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AccessApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\AccessApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ADODBApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\ADODBApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\AForge.NET\Framework\Release\AForge.dll</HintPath>
@@ -125,8 +133,56 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\AForge.NET\Framework\Release\AForge.Vision.dll</HintPath>
     </Reference>
+    <Reference Include="DAOApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\DAOApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ExcelApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\ExcelApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MSComctlLibApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\MSComctlLibApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MSDATASRCApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\MSDATASRCApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MSFormsApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\MSFormsApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MSHTMLApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\MSHTMLApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MSProjectApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\MSProjectApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>C:\Users\markz\Desktop\mysql-connector-net-6.9.9-noinstall\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NetOffice">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\NetOffice.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OfficeApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\OfficeApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OutlookApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\OutlookApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OWC10Api">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\OWC10Api.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PowerPointApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\PowerPointApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -139,6 +195,18 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VBIDEApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\VBIDEApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="VisioApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\VisioApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WordApi">
+      <HintPath>C:\Users\markz\Desktop\NetOffice 1.7.3\NET 4.5\Assemblies\Any CPU\WordApi.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bill.cs">
@@ -147,11 +215,23 @@
     <Compile Include="Bill.Designer.cs">
       <DependentUpon>Bill.cs</DependentUpon>
     </Compile>
+    <Compile Include="CancelBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelBill.Designer.cs">
+      <DependentUpon>CancelBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit_user.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Edit_user.Designer.cs">
       <DependentUpon>Edit_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="refill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="refill.Designer.cs">
+      <DependentUpon>refill.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -182,8 +262,14 @@
     <EmbeddedResource Include="Bill.resx">
       <DependentUpon>Bill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CancelBill.resx">
+      <DependentUpon>CancelBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit_user.resx">
       <DependentUpon>Edit_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="refill.resx">
+      <DependentUpon>refill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -216,6 +302,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="students.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="users.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -232,6 +324,38 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Picture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

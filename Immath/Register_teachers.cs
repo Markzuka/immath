@@ -15,12 +15,16 @@ namespace Immath
     {
         private MySqlDataReader _login_info;
         private Mainmenu _mainmenu;
+        public string connection = null;
+        public MySqlConnection conn = null;
+        public MySqlDataReader rdr = null;
         public Register_teachers(Mainmenu mainmenu)
         {
             InitializeComponent();
             _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
-    }
+            connection = _mainmenu.connection;
+        }
 
         private void Register_teachers_Load(object sender, EventArgs e)
         {
@@ -35,21 +39,19 @@ namespace Immath
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
-            MySqlConnection conn = null;
-            MySqlDataReader rdr = null;
+
             try
             {
                 conn = new MySqlConnection(connection);
                 conn.Open();
                 string SQL = "insert into users(Username,Password,Name,Auth,Nickname,moneytype) Values(?Username,?Password,?Name,?Auth,?Nickname,?moneytype)";
                 MySqlCommand command = new MySqlCommand(SQL, conn);
-                command.Parameters.Add("?Username", textBox1.Text);
-                command.Parameters.Add("?Password", "immath555");
-                command.Parameters.Add("?Name", textBox2.Text);
-                command.Parameters.Add("?Auth", "user");
-                command.Parameters.Add("?Nickname", textBox3.Text);
-                command.Parameters.Add("?moneytype", 1);
+                command.Parameters.AddWithValue("?Username", textBox1.Text);
+                command.Parameters.AddWithValue("?Password", "immath555");
+                command.Parameters.AddWithValue("?Name", textBox2.Text);
+                command.Parameters.AddWithValue("?Auth", "user");
+                command.Parameters.AddWithValue("?Nickname", textBox3.Text);
+                command.Parameters.AddWithValue("?moneytype", 1);
                 command.ExecuteNonQuery();
                 MessageBox.Show("Register complete!");
                 textBox1.Text = "";

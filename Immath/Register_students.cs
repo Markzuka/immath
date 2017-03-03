@@ -22,11 +22,16 @@ namespace Immath
         VideoCaptureDevice cam;
         CultureInfo ThaiCulture = new CultureInfo("th-TH");
         CultureInfo UsaCulture = new CultureInfo("en-US");
+        public string connection = null;
+        public MySqlConnection conn = null;
+        public MySqlDataReader rdr = null;
+     
         public Register_students(Mainmenu mainmenu)
         {
             InitializeComponent();
             _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
+            connection = _mainmenu.connection;
         }
         public void clear_content()
         {
@@ -121,9 +126,7 @@ namespace Immath
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
-            MySqlConnection conn = null;
-            MySqlDataReader rdr = null;
+
             try
             {
                 conn = new MySqlConnection(connection);
@@ -137,43 +140,43 @@ namespace Immath
                     conn.Open();
                     SQL = "UPDATE students SET Firstname=?FirstName,Lastname=?Lastname,Titlename=?Titlename,Nickname=?Nickname,Sex=?Sex,DateOfBirth=?DateOfBirth,DreamJob=?DreamJob,Tel=?Tel,Email=?Email,Facebook=?Facebook,School=?School,School_level=?School_level,LastAvgGrade=?LastAvgGrade,MathG=?MathG,SciG=?SciG,EngG=?EngG,PhyG=?PhyG,CheG=?CheG,BioG=?BioG,Kindergarten=?Kindergarten,PrimarySchool=?PrimarySchool,JuniorHighSchool=?JuniorHighSchool,SeniorHighSchool=?SeniorHighSchool,FatherName=?FatherName,FatherJob=?FatherJob,FatherTel=?FatherTel,MotherName=?MotherName,MotherJob=?MotherJob,MotherTel=?MotherTel,Address=?Address,LiveName=?LiveName,LiveRelation=?LiveRelation,LiveTel=?LiveTel,Note=?Note,Line_id=?Line_id,Line_id_parent=?Line_id_parent  where Code =?Code";
                     command = new MySqlCommand(SQL, conn);
-                    command.Parameters.Add("?Firstname", textBox_Firstname.Text);
-                    command.Parameters.Add("?Lastname", textBox_Lastname.Text);
-                    command.Parameters.Add("?Titlename", comboBox_Titlename.Text);
-                    command.Parameters.Add("?Nickname", textBox_Nickname.Text);
-                    command.Parameters.Add("?Sex", comboBox_Sex.Text);                   
-                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
-                    command.Parameters.Add("?DreamJob", textBox_DreamJob.Text);
-                    command.Parameters.Add("?Tel", textBox_Tel.Text);
-                    command.Parameters.Add("?Email", textBox_Email.Text);
-                    command.Parameters.Add("?Facebook", textBox_Facebook.Text);
-                    command.Parameters.Add("?School", textBox_School.Text);
-                    command.Parameters.Add("?School_level", comboBox_School_level.Text);
-                    command.Parameters.Add("?LastAvgGrade", textBox_LastAvgGrade.Text);
-                    command.Parameters.Add("?MathG", textBox_MathG.Text);
-                    command.Parameters.Add("?SciG", textBox_SciG.Text);
-                    command.Parameters.Add("?EngG", textBox_EngG.Text);
-                    command.Parameters.Add("?PhyG", textBox_PhyG.Text);
-                    command.Parameters.Add("?CheG", textBox_CheG.Text);
-                    command.Parameters.Add("?BioG", textBox_BioG.Text);
-                    command.Parameters.Add("?Kindergarten", textBox_Kindergarten.Text);
-                    command.Parameters.Add("?PrimarySchool", textBox_PrimarySchool.Text);
-                    command.Parameters.Add("?JuniorHighSchool", textBox_JuniorHighSchool.Text);
-                    command.Parameters.Add("?SeniorHighSchool", textBox_SeniorSchool.Text);
-                    command.Parameters.Add("?FatherName", textBox_FatherName.Text);
-                    command.Parameters.Add("?FatherJob", textBox_FatherJob.Text);
-                    command.Parameters.Add("?FatherTel", textBox_FatherTel.Text);
-                    command.Parameters.Add("?MotherName", textBox_MotherName.Text);
-                    command.Parameters.Add("?MotherJob", textBox_MotherJob.Text);
-                    command.Parameters.Add("?MotherTel", textBox_MotherTel.Text);
-                    command.Parameters.Add("?Address", textBox_Address.Text);
-                    command.Parameters.Add("?LiveName", textBox_LiveName.Text);
-                    command.Parameters.Add("?LiveRelation", textBox_LiveRelation.Text);
-                    command.Parameters.Add("?LiveTel", textBox_LiveTel.Text);
-                    command.Parameters.Add("?Note", textBox_Note.Text);
-                    command.Parameters.Add("?Line_id", textBox_Line_id.Text);
-                    command.Parameters.Add("?Line_id_parent", textBox_Line_id_parent.Text);
-                    command.Parameters.Add("?Code", textbox_Code.Text);
+                    command.Parameters.AddWithValue("?Firstname", textBox_Firstname.Text);
+                    command.Parameters.AddWithValue("?Lastname", textBox_Lastname.Text);
+                    command.Parameters.AddWithValue("?Titlename", comboBox_Titlename.Text);
+                    command.Parameters.AddWithValue("?Nickname", textBox_Nickname.Text);
+                    command.Parameters.AddWithValue("?Sex", comboBox_Sex.Text);                   
+                    command.Parameters.AddWithValue("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
+                    command.Parameters.AddWithValue("?DreamJob", textBox_DreamJob.Text);
+                    command.Parameters.AddWithValue("?Tel", textBox_Tel.Text);
+                    command.Parameters.AddWithValue("?Email", textBox_Email.Text);
+                    command.Parameters.AddWithValue("?Facebook", textBox_Facebook.Text);
+                    command.Parameters.AddWithValue("?School", textBox_School.Text);
+                    command.Parameters.AddWithValue("?School_level", comboBox_School_level.Text);
+                    command.Parameters.AddWithValue("?LastAvgGrade", textBox_LastAvgGrade.Text);
+                    command.Parameters.AddWithValue("?MathG", textBox_MathG.Text);
+                    command.Parameters.AddWithValue("?SciG", textBox_SciG.Text);
+                    command.Parameters.AddWithValue("?EngG", textBox_EngG.Text);
+                    command.Parameters.AddWithValue("?PhyG", textBox_PhyG.Text);
+                    command.Parameters.AddWithValue("?CheG", textBox_CheG.Text);
+                    command.Parameters.AddWithValue("?BioG", textBox_BioG.Text);
+                    command.Parameters.AddWithValue("?Kindergarten", textBox_Kindergarten.Text);
+                    command.Parameters.AddWithValue("?PrimarySchool", textBox_PrimarySchool.Text);
+                    command.Parameters.AddWithValue("?JuniorHighSchool", textBox_JuniorHighSchool.Text);
+                    command.Parameters.AddWithValue("?SeniorHighSchool", textBox_SeniorSchool.Text);
+                    command.Parameters.AddWithValue("?FatherName", textBox_FatherName.Text);
+                    command.Parameters.AddWithValue("?FatherJob", textBox_FatherJob.Text);
+                    command.Parameters.AddWithValue("?FatherTel", textBox_FatherTel.Text);
+                    command.Parameters.AddWithValue("?MotherName", textBox_MotherName.Text);
+                    command.Parameters.AddWithValue("?MotherJob", textBox_MotherJob.Text);
+                    command.Parameters.AddWithValue("?MotherTel", textBox_MotherTel.Text);
+                    command.Parameters.AddWithValue("?Address", textBox_Address.Text);
+                    command.Parameters.AddWithValue("?LiveName", textBox_LiveName.Text);
+                    command.Parameters.AddWithValue("?LiveRelation", textBox_LiveRelation.Text);
+                    command.Parameters.AddWithValue("?LiveTel", textBox_LiveTel.Text);
+                    command.Parameters.AddWithValue("?Note", textBox_Note.Text);
+                    command.Parameters.AddWithValue("?Line_id", textBox_Line_id.Text);
+                    command.Parameters.AddWithValue("?Line_id_parent", textBox_Line_id_parent.Text);
+                    command.Parameters.AddWithValue("?Code", textbox_Code.Text);
                     command.ExecuteNonQuery();
                     MessageBox.Show("update complete!");
                     conn.Close();
@@ -182,45 +185,46 @@ namespace Immath
                 {
                     conn.Close();
                     conn.Open();
-                    SQL = "insert into students(Firstname,Lastname,Titlename,Nickname,Sex,Code,THB,DateOfBirth,DreamJob,Tel,Email,Facebook,School,School_level,LastAvgGrade,MathG,SciG,EngG,PhyG,CheG,BioG,Kindergarten,PrimarySchool,JuniorHighSchool,SeniorHighSchool,FatherName,FatherJob,FatherTel,MotherName,MotherJob,MotherTel,Address,LiveName,LiveRelation,LiveTel,Pic,Note,Line_id,Line_id_parent) Values(?Firstname,?Lastname,?Titlename,?Nickname,?Sex,?Code,0,?DateOfBirth,?DreamJob,?Tel,?Email,?Facebook,?School,?School_level,?LastAvgGrade,?MathG,?SciG,?EngG,?PhyG,?CheG,?BioG,?Kindergarten,?PrimarySchool,?JuniorHighSchool,?SeniorHighSchool,?FatherName,?FatherJob,?FatherTel,?MotherName,?MotherJob,?MotherTel,?Address,?LiveName,?LiveRelation,?LiveTel,null,?Note,?Line_id,?Line_id_parent)";
+                    SQL = "insert into students(Firstname,Lastname,Titlename,Nickname,Sex,Code,THB,DateOfBirth,DreamJob,Tel,Email,Facebook,School,School_level,LastAvgGrade,MathG,SciG,EngG,PhyG,CheG,BioG,Kindergarten,PrimarySchool,JuniorHighSchool,SeniorHighSchool,FatherName,FatherJob,FatherTel,MotherName,MotherJob,MotherTel,Address,LiveName,LiveRelation,LiveTel,Pic,Note,Line_id,Line_id_parent,Create_date) Values(?Firstname,?Lastname,?Titlename,?Nickname,?Sex,?Code,0,?DateOfBirth,?DreamJob,?Tel,?Email,?Facebook,?School,?School_level,?LastAvgGrade,?MathG,?SciG,?EngG,?PhyG,?CheG,?BioG,?Kindergarten,?PrimarySchool,?JuniorHighSchool,?SeniorHighSchool,?FatherName,?FatherJob,?FatherTel,?MotherName,?MotherJob,?MotherTel,?Address,?LiveName,?LiveRelation,?LiveTel,null,?Note,?Line_id,?Line_id_parent,?Create_date)";
                     command = new MySqlCommand(SQL, conn);
-                    command.Parameters.Add("?Firstname", textBox_Firstname.Text);
-                    command.Parameters.Add("?Lastname", textBox_Lastname.Text);
-                    command.Parameters.Add("?Titlename", comboBox_Titlename.Text);
-                    command.Parameters.Add("?Nickname", textBox_Nickname.Text);
-                    command.Parameters.Add("?Sex", comboBox_Sex.Text);
-                    command.Parameters.Add("?Code", textbox_Code.Text);
-                    command.Parameters.Add("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
-                    command.Parameters.Add("?DreamJob", textBox_DreamJob.Text);
-                    command.Parameters.Add("?Tel", textBox_Tel.Text);
-                    command.Parameters.Add("?Email", textBox_Email.Text);
-                    command.Parameters.Add("?Facebook", textBox_Facebook.Text);
-                    command.Parameters.Add("?School", textBox_School.Text);
-                    command.Parameters.Add("?School_level", comboBox_School_level.Text);
-                    command.Parameters.Add("?LastAvgGrade", textBox_LastAvgGrade.Text);
-                    command.Parameters.Add("?MathG", textBox_MathG.Text);
-                    command.Parameters.Add("?SciG", textBox_SciG.Text);
-                    command.Parameters.Add("?EngG", textBox_EngG.Text);
-                    command.Parameters.Add("?PhyG", textBox_PhyG.Text);
-                    command.Parameters.Add("?CheG", textBox_CheG.Text);
-                    command.Parameters.Add("?BioG", textBox_BioG.Text);
-                    command.Parameters.Add("?Kindergarten", textBox_Kindergarten.Text);
-                    command.Parameters.Add("?PrimarySchool", textBox_PrimarySchool.Text);
-                    command.Parameters.Add("?JuniorHighSchool", textBox_JuniorHighSchool.Text);
-                    command.Parameters.Add("?SeniorHighSchool", textBox_SeniorSchool.Text);
-                    command.Parameters.Add("?FatherName", textBox_FatherName.Text);
-                    command.Parameters.Add("?FatherJob", textBox_FatherJob.Text);
-                    command.Parameters.Add("?FatherTel", textBox_FatherTel.Text);
-                    command.Parameters.Add("?MotherName", textBox_MotherName.Text);
-                    command.Parameters.Add("?MotherJob", textBox_MotherJob.Text);
-                    command.Parameters.Add("?MotherTel", textBox_MotherTel.Text);
-                    command.Parameters.Add("?Address", textBox_Address.Text);
-                    command.Parameters.Add("?LiveName", textBox_LiveName.Text);
-                    command.Parameters.Add("?LiveRelation", textBox_LiveRelation.Text);
-                    command.Parameters.Add("?LiveTel", textBox_LiveTel.Text);
-                    command.Parameters.Add("?Note", textBox_Note.Text);
-                    command.Parameters.Add("?Line_id", textBox_Line_id.Text);
-                    command.Parameters.Add("?Line_id_parent", textBox_Line_id_parent.Text);
+                    command.Parameters.AddWithValue("?Firstname", textBox_Firstname.Text);
+                    command.Parameters.AddWithValue("?Lastname", textBox_Lastname.Text);
+                    command.Parameters.AddWithValue("?Titlename", comboBox_Titlename.Text);
+                    command.Parameters.AddWithValue("?Nickname", textBox_Nickname.Text);
+                    command.Parameters.AddWithValue("?Sex", comboBox_Sex.Text);
+                    command.Parameters.AddWithValue("?Code", textbox_Code.Text);
+                    command.Parameters.AddWithValue("?DateOfBirth", dateTimePicker_DateOfBirth.Value.Date.ToString("yyyy-MM-dd HH:mm", UsaCulture));
+                    command.Parameters.AddWithValue("?DreamJob", textBox_DreamJob.Text);
+                    command.Parameters.AddWithValue("?Tel", textBox_Tel.Text);
+                    command.Parameters.AddWithValue("?Email", textBox_Email.Text);
+                    command.Parameters.AddWithValue("?Facebook", textBox_Facebook.Text);
+                    command.Parameters.AddWithValue("?School", textBox_School.Text);
+                    command.Parameters.AddWithValue("?School_level", comboBox_School_level.Text);
+                    command.Parameters.AddWithValue("?LastAvgGrade", textBox_LastAvgGrade.Text);
+                    command.Parameters.AddWithValue("?MathG", textBox_MathG.Text);
+                    command.Parameters.AddWithValue("?SciG", textBox_SciG.Text);
+                    command.Parameters.AddWithValue("?EngG", textBox_EngG.Text);
+                    command.Parameters.AddWithValue("?PhyG", textBox_PhyG.Text);
+                    command.Parameters.AddWithValue("?CheG", textBox_CheG.Text);
+                    command.Parameters.AddWithValue("?BioG", textBox_BioG.Text);
+                    command.Parameters.AddWithValue("?Kindergarten", textBox_Kindergarten.Text);
+                    command.Parameters.AddWithValue("?PrimarySchool", textBox_PrimarySchool.Text);
+                    command.Parameters.AddWithValue("?JuniorHighSchool", textBox_JuniorHighSchool.Text);
+                    command.Parameters.AddWithValue("?SeniorHighSchool", textBox_SeniorSchool.Text);
+                    command.Parameters.AddWithValue("?FatherName", textBox_FatherName.Text);
+                    command.Parameters.AddWithValue("?FatherJob", textBox_FatherJob.Text);
+                    command.Parameters.AddWithValue("?FatherTel", textBox_FatherTel.Text);
+                    command.Parameters.AddWithValue("?MotherName", textBox_MotherName.Text);
+                    command.Parameters.AddWithValue("?MotherJob", textBox_MotherJob.Text);
+                    command.Parameters.AddWithValue("?MotherTel", textBox_MotherTel.Text);
+                    command.Parameters.AddWithValue("?Address", textBox_Address.Text);
+                    command.Parameters.AddWithValue("?LiveName", textBox_LiveName.Text);
+                    command.Parameters.AddWithValue("?LiveRelation", textBox_LiveRelation.Text);
+                    command.Parameters.AddWithValue("?LiveTel", textBox_LiveTel.Text);
+                    command.Parameters.AddWithValue("?Note", textBox_Note.Text);
+                    command.Parameters.AddWithValue("?Line_id", textBox_Line_id.Text);
+                    command.Parameters.AddWithValue("?Line_id_parent", textBox_Line_id_parent.Text);
+                    command.Parameters.AddWithValue("?Create_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", UsaCulture));
                     command.ExecuteNonQuery();
                     MessageBox.Show("complete");
                     conn.Close();
@@ -247,9 +251,6 @@ namespace Immath
 
         private void button_findbycode_Click(object sender, EventArgs e)
         {
-            string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
-            MySqlConnection conn = null;
-            MySqlDataReader rdr = null;
             try
             {
                 conn = new MySqlConnection(connection);
