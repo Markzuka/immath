@@ -110,6 +110,7 @@
             this.textBox_Note = new System.Windows.Forms.TextBox();
             this.label_THB = new System.Windows.Forms.Label();
             this.button_clear = new System.Windows.Forms.Button();
+            this.button_form = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RealPic)).BeginInit();
             this.SuspendLayout();
@@ -731,7 +732,7 @@
             // 
             // button_save
             // 
-            this.button_save.BackColor = System.Drawing.Color.Blue;
+            this.button_save.BackColor = System.Drawing.Color.LimeGreen;
             this.button_save.Location = new System.Drawing.Point(16, 71);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(81, 45);
@@ -742,7 +743,7 @@
             // 
             // button_findbycode
             // 
-            this.button_findbycode.BackColor = System.Drawing.Color.Lime;
+            this.button_findbycode.BackColor = System.Drawing.Color.Cyan;
             this.button_findbycode.Location = new System.Drawing.Point(104, 72);
             this.button_findbycode.Name = "button_findbycode";
             this.button_findbycode.Size = new System.Drawing.Size(78, 44);
@@ -788,11 +789,23 @@
             this.button_clear.UseVisualStyleBackColor = false;
             this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
+            // button_form
+            // 
+            this.button_form.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button_form.Location = new System.Drawing.Point(299, 74);
+            this.button_form.Name = "button_form";
+            this.button_form.Size = new System.Drawing.Size(78, 43);
+            this.button_form.TabIndex = 79;
+            this.button_form.Text = "สอบถาม";
+            this.button_form.UseVisualStyleBackColor = false;
+            this.button_form.Click += new System.EventHandler(this.button_form_Click);
+            // 
             // Register_students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 675);
+            this.Controls.Add(this.button_form);
             this.Controls.Add(this.button_clear);
             this.Controls.Add(this.label_THB);
             this.Controls.Add(this.textBox_Note);
@@ -971,5 +984,6 @@
         private System.Windows.Forms.TextBox textBox_Note;
         private System.Windows.Forms.Label label_THB;
         private System.Windows.Forms.Button button_clear;
+        private System.Windows.Forms.Button button_form;
     }
 }

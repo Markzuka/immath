@@ -45,6 +45,9 @@
             this.button_reportallusers = new System.Windows.Forms.Button();
             this.button_upclass = new System.Windows.Forms.Button();
             this.button_calpermonth = new System.Windows.Forms.Button();
+            this.button_report_student_by_id = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_code = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_register_student
@@ -205,10 +208,39 @@
             this.button_calpermonth.Text = "ตัดยอดรายเดือน";
             this.button_calpermonth.UseVisualStyleBackColor = true;
             // 
+            // button_report_student_by_id
+            // 
+            this.button_report_student_by_id.Location = new System.Drawing.Point(290, 300);
+            this.button_report_student_by_id.Name = "button_report_student_by_id";
+            this.button_report_student_by_id.Size = new System.Drawing.Size(149, 42);
+            this.button_report_student_by_id.TabIndex = 16;
+            this.button_report_student_by_id.Text = "รายงานนักเรียนตามCode";
+            this.button_report_student_by_id.UseVisualStyleBackColor = true;
+            this.button_report_student_by_id.Click += new System.EventHandler(this.button_report_student_by_id_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(299, 267);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Code";
+            // 
+            // textBox_code
+            // 
+            this.textBox_code.Location = new System.Drawing.Point(339, 264);
+            this.textBox_code.Name = "textBox_code";
+            this.textBox_code.Size = new System.Drawing.Size(100, 20);
+            this.textBox_code.TabIndex = 18;
+            // 
             // Mainmenu
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(643, 362);
+            this.Controls.Add(this.textBox_code);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button_report_student_by_id);
             this.Controls.Add(this.button_calpermonth);
             this.Controls.Add(this.button_upclass);
             this.Controls.Add(this.button_reportallusers);
@@ -255,5 +287,8 @@
         private System.Windows.Forms.Button button_reportallusers;
         private System.Windows.Forms.Button button_upclass;
         private System.Windows.Forms.Button button_calpermonth;
+        private System.Windows.Forms.Button button_report_student_by_id;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_code;
     }
 }

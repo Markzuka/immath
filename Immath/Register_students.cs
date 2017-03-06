@@ -32,6 +32,15 @@ namespace Immath
             _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
             connection = _mainmenu.connection;
+            object[] titlename = new object[] { "ด.ช.", "ด.ญ.", "นาย", "นาง", "นางสาว", "ม.ร.ว.", "ม.ล." };
+            comboBox_Titlename.Items.AddRange(titlename);
+            comboBox_Titlename.SelectedIndex = 0;
+            object[] sex = new object[] { "ชาย", "หญิง" };
+            comboBox_Sex.Items.AddRange(sex);
+            comboBox_Sex.SelectedIndex = 0;
+            object[] school_level = new object[] { "ป.1", "ป.2", "ป.3", "ป.4", "ป.5", "ป.6", "ม.1", "ม.2", "ม.3", "ม.4", "ม.5", "ม.6", "มหาลัย" };
+            comboBox_School_level.Items.AddRange(school_level);
+            comboBox_School_level.SelectedIndex = 0;
         }
         public void clear_content()
         {
@@ -78,15 +87,7 @@ namespace Immath
         }
         private void Register_students_Load(object sender, EventArgs e)
         {
-            object[] titlename = new object[] { "ด.ช.", "ด.ญ.", "นาย" ,"นาง","นางสาว","ม.ร.ว.","ม.ล."};
-            comboBox_Titlename.Items.AddRange(titlename);
-            comboBox_Titlename.SelectedIndex=0;
-            object[] sex = new object[] { "ชาย", "หญิง" };
-            comboBox_Sex.Items.AddRange(sex);
-            comboBox_Sex.SelectedIndex = 0;
-            object[] school_level = new object[] { "ป.1" ,"ป.2" ,"ป.3" ,"ป.4" ,"ป.5","ป.6","ม.1","ม.2", "ม.3", "ม.4", "ม.5", "ม.6" ,"มหาลัย"};
-            comboBox_School_level.Items.AddRange(school_level);
-            comboBox_School_level.SelectedIndex = 0;
+
             dvlist = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach(FilterInfo info in dvlist)
             {
@@ -107,7 +108,7 @@ namespace Immath
 
         private void Register_students_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             this.cam.Stop();
             _mainmenu.Show();
 
@@ -328,6 +329,45 @@ namespace Immath
         private void button_clear_Click(object sender, EventArgs e)
         {
             clear_content();
+        }
+
+        private void button_form_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn = new MySqlConnection(connection);
+                conn.Open();
+                string SQL = "select * from students where code='" + textbox_Code.Text + "'";
+                MySqlCommand command = new MySqlCommand(SQL, conn);
+                rdr = command.ExecuteReader();
+                if (rdr.Read())
+                {
+                    S_Form f = new S_Form(connection, Int32.Parse(rdr["id"].ToString()));
+                    f.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Dont have");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        
+            
         }
     }
 }

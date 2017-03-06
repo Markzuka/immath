@@ -69,3 +69,5 @@ D:\immath\Immath\bin\Debug\OfficeApi.pdb
 D:\immath\Immath\bin\Debug\OfficeApi.xml
 D:\immath\Immath\bin\Debug\users.xlsx
 D:\Immath\Immath\obj\Debug\Immath.CancelBill.resources
+D:\Immath\Immath\bin\Debug\studentr.xlsx
+D:\Immath\Immath\obj\Debug\Immath.S_Form.resources

@@ -259,6 +259,12 @@
     <Compile Include="Register_teachers.Designer.cs">
       <DependentUpon>Register_teachers.cs</DependentUpon>
     </Compile>
+    <Compile Include="S_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="S_Form.Designer.cs">
+      <DependentUpon>S_Form.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bill.resx">
       <DependentUpon>Bill.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +299,9 @@
     <EmbeddedResource Include="Register_teachers.resx">
       <DependentUpon>Register_teachers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="S_Form.resx">
+      <DependentUpon>S_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -302,6 +311,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="studentr.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="students.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

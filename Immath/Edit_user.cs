@@ -37,7 +37,7 @@ namespace Immath
 
         private void Edit_user_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             _mainmenu.Show();
         }
 

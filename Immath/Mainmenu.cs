@@ -16,6 +16,7 @@ using System.IO;
 using NetOffice.ExcelApi;
 using ExcelApi;
 using System.Globalization;
+using NetOffice.ExcelApi.Enums;
 
 namespace Immath
 {
@@ -178,6 +179,7 @@ namespace Immath
 
                 System.Diagnostics.Process.Start(file_save_path);
             }
+            excel.Quit();
           
         }
 
@@ -224,10 +226,13 @@ namespace Immath
                
                 rdr = command.ExecuteReader();
                 int i = 1;
-                
+
+                string last_bon = "";
+                string last_bin = "";
+                bool x = true;
                 while (rdr.Read())
                 {
-
+                   
                     ws.Range("A" + (2 + i)).Value = _login_info["Nickname"];
                     for (int j = 0; j < id.Count; j++)
                     {
@@ -245,12 +250,39 @@ namespace Immath
                     ws.Range("F" + (2 + i)).Value = rdr["Starttime"] + "-" + temp_time;
                     ws.Range("G" + (2 + i)).Value = rdr["Hour"];
                     ws.Range("H" + (2 + i)).Value = rdr["Price_Users"];
+                    ws.Range("I" + (2 + i)).Value = rdr["Book_no"];
+                    ws.Range("J" + (2 + i)).Value = rdr["Bill_no"];
+
+                    if(last_bon == rdr["Book_no"].ToString())
+                    {
+                        if (last_bin == rdr["Bill_no"].ToString())
+                        {
+                            if(x)
+                            {
+                                ws.Range("A" + (1 + i), "J" + (1 + i)).Interior.Color = XlRgbColor.rgbSkyBlue;
+                                ws.Range("A" + (2 + i), "J" + (2 + i)).Interior.Color = XlRgbColor.rgbSkyBlue;
+                            }
+                        }
+                        else
+                        {
+                            x = !x;
+                        }
+                    }
+                    else
+                    {
+                        x = !x;
+                    }
+                    last_bon = rdr["Book_no"].ToString();
+                    last_bin = rdr["Bill_no"].ToString();
+
                     i = i + 1;
                 }
+
                 ws.Columns.AutoFit();
                 ws.Rows.AutoFit();
                 wb.Save();
-
+                excel.Quit();
+                System.Diagnostics.Process.Start(file_save_path);
             }
             catch (Exception ex)
             {
@@ -268,8 +300,8 @@ namespace Immath
                     conn.Close();
                 }
                 excel.Quit();
-                System.Diagnostics.Process.Start(file_save_path);
             }
+            excel.Quit();
         }
 
         private void button_cancelbill_Click(object sender, EventArgs e)
@@ -315,12 +347,16 @@ namespace Immath
                 Worksheet ws = (Worksheet)wb.Sheets[1];
                 SQL = "select * from bills where (Delete_date is null) and (Starttime between ?startt and ?stopt) ORDER BY Datetime ASC";
                 command = new MySqlCommand(SQL, conn);
+                command.Parameters.AddWithValue("?users_id", _login_info["id"]);
                 command.Parameters.AddWithValue("?startt", dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss", UsaCulture));
                 command.Parameters.AddWithValue("?stopt", dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss", UsaCulture));
 
                 rdr = command.ExecuteReader();
                 int i = 1;
 
+                string last_bon = "";
+                string last_bin = "";
+                bool x = true;
                 while (rdr.Read())
                 {
 
@@ -341,12 +377,39 @@ namespace Immath
                     ws.Range("F" + (2 + i)).Value = rdr["Starttime"] + "-" + temp_time;
                     ws.Range("G" + (2 + i)).Value = rdr["Hour"];
                     ws.Range("H" + (2 + i)).Value = rdr["Price_Users"];
+                    ws.Range("I" + (2 + i)).Value = rdr["Book_no"];
+                    ws.Range("J" + (2 + i)).Value = rdr["Bill_no"];
+
+                    if (last_bon == rdr["Book_no"].ToString())
+                    {
+                        if (last_bin == rdr["Bill_no"].ToString())
+                        {
+                            if (x)
+                            {
+                                ws.Range("A" + (1 + i), "J" + (1 + i)).Interior.Color = XlRgbColor.rgbSkyBlue;
+                                ws.Range("A" + (2 + i), "J" + (2 + i)).Interior.Color = XlRgbColor.rgbSkyBlue;
+                            }
+                        }
+                        else
+                        {
+                            x = !x;
+                        }
+                    }
+                    else
+                    {
+                        x = !x;
+                    }
+                    last_bon = rdr["Book_no"].ToString();
+                    last_bin = rdr["Bill_no"].ToString();
+
                     i = i + 1;
                 }
+
                 ws.Columns.AutoFit();
                 ws.Rows.AutoFit();
                 wb.Save();
-
+                excel.Quit();
+                System.Diagnostics.Process.Start(file_save_path);
             }
             catch (Exception ex)
             {
@@ -364,8 +427,8 @@ namespace Immath
                     conn.Close();
                 }
                 excel.Quit();
-                System.Diagnostics.Process.Start(file_save_path);
             }
+            excel.Quit();
         }
 
         private void button_upclass_Click(object sender, EventArgs e)
@@ -475,6 +538,137 @@ namespace Immath
                     conn.Close();
                 }
             }
+        }
+
+        private void button_report_student_by_id_Click(object sender, EventArgs e)
+        {
+            List<int> Code = new List<int>();
+            List<int> id = new List<int>();
+            List<string> nickname = new List<string>();
+            List<DateTime> date = new List<DateTime>();
+            List<double> money = new List<double>();
+            List<string> teacher_name = new List<string>();
+            List<int> teacher_id = new List<int>();
+            NetOffice.ExcelApi.Application excel = new NetOffice.ExcelApi.Application();
+
+            string file = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\studentr.xlsx";
+            bool exists = File.Exists(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\reports");
+            if (!exists)
+                System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\reports");
+
+            String file_save_path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\reports\\" + "studentr.xlsx";
+            if (File.Exists(file_save_path))
+                System.IO.File.Delete(file_save_path);
+            System.IO.File.Copy(file, file_save_path, true);
+            try
+            {
+                conn = new MySqlConnection(connection);
+                conn.Open();
+                string SQL = "select id,Code,Nickname from students where Code =?Code";
+                MySqlCommand command = new MySqlCommand(SQL, conn);
+                command.Parameters.AddWithValue("?Code", textBox_code.Text);
+                rdr = command.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    Code.Add(rdr.GetInt32(1));
+                    id.Add(rdr.GetInt32(0));
+                    nickname.Add(rdr.GetString(2));
+                }
+                else
+                {
+                    MessageBox.Show("dont have");
+                }
+                conn.Close();
+
+                if (Code.Count != 0)
+                {
+                    conn.Open();
+                    SQL = "select * from refill where students_id =?students_id";
+                    command = new MySqlCommand(SQL, conn);
+                    command.Parameters.AddWithValue("?students_id", id[0]);
+                    rdr = command.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        date.Add(DateTime.Parse(rdr["Date"].ToString()));
+                        money.Add(double.Parse(rdr["Money"].ToString()));
+                    }
+                    conn.Close();
+                    conn.Open();
+                    SQL = "select * from users";
+                    command = new MySqlCommand(SQL, conn);
+                    rdr = command.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        teacher_id.Add(Int32.Parse(rdr["id"].ToString()));
+                        teacher_name.Add(rdr["Nickname"].ToString());
+                    }
+                    conn.Close();
+                    conn.Open();
+                    SQL = "select * from bills where (Delete_date is null) and (Students_id = ?student_id) ORDER BY Datetime ASC";
+                    command = new MySqlCommand(SQL, conn);
+                    command.Parameters.AddWithValue("?student_id", id[0]);
+                    rdr = command.ExecuteReader();
+
+                    Workbook wb = excel.Workbooks.Open(file_save_path);
+                    Worksheet ws = (Worksheet)wb.Sheets[1];
+                    int i = 1;
+                    ws.Range("B" + (2)).Value = nickname[0];
+                    ws.Range("D" + (2)).Value = Code[0];
+                    while (rdr.Read())
+                    {
+                        for (int j = 0; j < teacher_id.Count; j++)
+                        {
+                            if (rdr["Users_id"].ToString() == teacher_id[j].ToString())
+                            {
+                                ws.Range("A" + (i + 3)).Value = teacher_name[j];
+                            }
+
+                        }
+
+                        ws.Range("B" + (i + 3)).Value = rdr["Datetime"];
+                        ws.Range("C" + (i + 3)).Value = rdr["Subject"];
+                        ws.Range("D" + (i + 3)).Value = rdr["Hour"];
+                        ws.Range("E" + (i + 3)).Value = rdr["people"];
+                        ws.Range("F" + (i + 3)).Value = rdr["Price_Students"];
+                        i = i + 1;
+                    }
+                    conn.Close();
+                    for (i = 0; i < money.Count; i++)
+                    {
+                        ws.Range("H" + (i + 4)).Value = date[i];
+                        ws.Range("I" + (i + 4)).Value = money[i];
+                    }
+
+
+
+                    ws.Columns.AutoFit();
+                    ws.Rows.AutoFit();
+                    wb.Save();
+                    excel.Quit();
+                    System.Diagnostics.Process.Start(file_save_path);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                excel.Quit();
+            }
+            excel.Quit();
         }
     }
 }
