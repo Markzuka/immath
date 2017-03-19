@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Immath
 {
@@ -24,7 +25,7 @@ namespace Immath
         }
         private void button_login_Click(object sender, EventArgs e)
         {
-            string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
+            string connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
             MySqlConnection conn = null;
             MySqlDataReader rdr = null;
             try

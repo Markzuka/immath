@@ -328,6 +328,9 @@
     <Content Include="book_no.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="condb.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="logo.ico" />
     <Content Include="logo.jpg" />
     <Content Include="bill_no.txt">

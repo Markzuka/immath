@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Immath
     {
         private MySqlDataReader _login_info;
         private Mainmenu _mainmenu;
-        public string connection = null;
+        public string connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
         public MySqlConnection conn = null;
         public MySqlDataReader rdr = null;
         public Register_teachers(Mainmenu mainmenu)

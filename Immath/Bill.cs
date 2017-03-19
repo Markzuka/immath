@@ -33,7 +33,7 @@ namespace Immath
             InitializeComponent();
             _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
-            connection = _mainmenu.connection;
+            connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
             clear_value();
         }
 
@@ -1953,6 +1953,30 @@ namespace Immath
             }
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if(dateTimePicker1.Value.DayOfWeek != DateTime.Now.DayOfWeek)
+            {
+                MessageBox.Show("Wrong day");
+                dateTimePicker1.Value = DateTime.Now;
+            }
+            else
+            {
+                
+            }
+        }
 
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker2.Value.DayOfWeek != DateTime.Now.DayOfWeek)
+            {
+                MessageBox.Show("Wrong day");
+                dateTimePicker2.Value = DateTime.Now;
+            }
+            else
+            {
+
+            }
+        }
     }
 }

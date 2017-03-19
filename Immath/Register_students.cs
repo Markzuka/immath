@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Globalization;
+using System.IO;
 
 namespace Immath
 {
@@ -31,7 +32,7 @@ namespace Immath
             InitializeComponent();
             _login_info = mainmenu._login_info;
             _mainmenu = mainmenu;
-            connection = _mainmenu.connection;
+            connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
             object[] titlename = new object[] { "ด.ช.", "ด.ญ.", "นาย", "นาง", "นางสาว", "ม.ร.ว.", "ม.ล." };
             comboBox_Titlename.Items.AddRange(titlename);
             comboBox_Titlename.SelectedIndex = 0;

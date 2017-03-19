@@ -23,7 +23,7 @@ namespace Immath
     public partial class Mainmenu : Form
     {
         public Login _login = new Login();
-        public string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
+        public string connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
         public MySqlConnection conn = null;
         public MySqlDataReader rdr = null;
         public MySqlDataReader _login_info;
@@ -41,6 +41,7 @@ namespace Immath
             _login_info = login_info;
             _login = login;
             label1.Text = label1.Text + " " + _login_info["Name"];
+            label4.Text = label4.Text + " " + _login_info["money"];
             if (_login_info["Auth"].ToString() == "admin")
             {
                 button_register_teacher.Enabled = true;
@@ -48,6 +49,9 @@ namespace Immath
                 button_reportallusers.Enabled = true;
                 button_upclass.Enabled = true;
                 button_calpermonth.Enabled = true;
+                button_reportstudent.Enabled = true;
+                button_report_student_by_id.Enabled = true;
+                button_cancelbill.Enabled = true;
             }
             else
             {
@@ -56,6 +60,9 @@ namespace Immath
                 button_reportallusers.Enabled = false;
                 button_upclass.Enabled = false;
                 button_calpermonth.Enabled = false;
+                button_reportstudent.Enabled = false;
+                button_report_student_by_id.Enabled = false;
+                button_cancelbill.Enabled = false;
             }
             _register_students = new Register_students(this);
             _register_teachers = new Register_teachers(this);
@@ -199,6 +206,8 @@ namespace Immath
             if (File.Exists(file_save_path))
                 System.IO.File.Delete(file_save_path);
             System.IO.File.Copy(file, file_save_path, true);
+
+            double sum = 0;
             try
             {
                 conn = new MySqlConnection(connection);
@@ -232,7 +241,7 @@ namespace Immath
                 bool x = true;
                 while (rdr.Read())
                 {
-                   
+                 
                     ws.Range("A" + (2 + i)).Value = _login_info["Nickname"];
                     for (int j = 0; j < id.Count; j++)
                     {
@@ -266,18 +275,25 @@ namespace Immath
                         else
                         {
                             x = !x;
+                            sum= sum+double.Parse(rdr["Price_Users"].ToString());
                         }
                     }
                     else
                     {
                         x = !x;
+                        sum = sum + double.Parse(rdr["Price_Users"].ToString());
                     }
                     last_bon = rdr["Book_no"].ToString();
                     last_bin = rdr["Bill_no"].ToString();
 
                     i = i + 1;
                 }
-
+                conn.Close();
+                ws.Range("M" + (1)).Value = sum;
+                ws.Range("M" + (2)).Value = double.Parse(ws.Range("M" + (1)).Value.ToString()) * 0.1;
+                ws.Range("M" + (3)).Value = double.Parse(ws.Range("M" + (2)).Value.ToString()) * 0.03;
+                ws.Range("M" + (4)).Value = double.Parse(ws.Range("M" + (2)).Value.ToString()) + double.Parse(ws.Range("M" + (3)).Value.ToString());
+                ws.Range("M" + (5)).Value = double.Parse(ws.Range("M" + (1)).Value.ToString()) - double.Parse(ws.Range("M" + (4)).Value.ToString());
                 ws.Columns.AutoFit();
                 ws.Rows.AutoFit();
                 wb.Save();
@@ -669,6 +685,94 @@ namespace Immath
                 excel.Quit();
             }
             excel.Quit();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month,
+                   dateTimePicker1.Value.Day, 0, 0, 0);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2.Value = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month,
+                   dateTimePicker2.Value.Day, 23, 59, 59);
+        }
+
+        private void button_calpermonth_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn = new MySqlConnection(connection);
+                MySqlConnection conn2 = new MySqlConnection(connection);
+                conn.Open();
+                string SQL = "select DISTINCT Bill_no,Book_no,Users_id,Price_Users from bills where up is null and Book_no = 1 and Delete_date is null";
+                MySqlCommand command = new MySqlCommand(SQL, conn);
+                rdr = command.ExecuteReader();
+                DateTime now = DateTime.Now;
+                while (rdr.Read())
+                {
+
+                    conn2.Open();
+                    SQL = "update users set money=money+?money where id = ?id";
+                    command = new MySqlCommand(SQL, conn2);
+                    command.Parameters.AddWithValue("?money", Double.Parse(rdr["Price_Users"].ToString()) * 0.1 * 1.03);
+                    command.Parameters.AddWithValue("?id", Int32.Parse(rdr["Users_id"].ToString()));
+                    command.ExecuteNonQuery();
+                    conn2.Close();
+                    conn2.Open();
+                    SQL = "update bills set up=?up where Bill_no = ?Bill_no and Book_no = ?Book_no";
+                    command = new MySqlCommand(SQL, conn2);
+                    command.Parameters.AddWithValue("?up", now.ToString("yyyy-MM-dd HH:mm:ss", UsaCulture));
+                    command.Parameters.AddWithValue("?Bill_no", rdr["Bill_no"].ToString());
+                    command.Parameters.AddWithValue("?Book_no", rdr["Book_no"].ToString());
+                    command.ExecuteNonQuery();
+                    conn2.Close();
+
+                }
+                conn.Close();
+                conn.Open();
+                SQL = "select DISTINCT Bill_no,Book_no,Users_id,Price_Users from bills where up is null and Book_no = 2 and Delete_date is null";
+                command = new MySqlCommand(SQL, conn);
+                rdr = command.ExecuteReader();
+                while (rdr.Read())
+                {
+
+                    conn2.Open();
+                    SQL = "update users set money=money+?money where id = ?id";
+                    command = new MySqlCommand(SQL, conn2);
+                    command.Parameters.AddWithValue("?money", Double.Parse(rdr["Price_Users"].ToString()) * 0.1 * 1.03);
+                    command.Parameters.AddWithValue("?id", Int32.Parse(rdr["Users_id"].ToString()));
+                    command.ExecuteNonQuery();
+                    conn2.Close();
+                    conn2.Open();
+                    SQL = "update bills set up=?up where Bill_no = ?Bill_no and Book_no = ?Book_no";
+                    command = new MySqlCommand(SQL, conn2);
+                    command.Parameters.AddWithValue("?up", now.ToString("yyyy-MM-dd HH:mm:ss", UsaCulture));
+                    command.Parameters.AddWithValue("?Bill_no", rdr["Bill_no"].ToString());
+                    command.Parameters.AddWithValue("?Book_no", rdr["Book_no"].ToString());
+                    command.ExecuteNonQuery();
+                    conn2.Close();
+
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }

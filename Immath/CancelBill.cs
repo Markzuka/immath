@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Immath
 {
     public partial class CancelBill : Form
     {
-        public string connection = "server=127.0.0.1; database=immath;user=immath; password=math2017; CharSet=tis620;";
+        public string connection = File.ReadAllText(Directory.GetCurrentDirectory() + "/condb.txt");
         public MySqlConnection conn = null;
         public MySqlDataReader rdr = null;
         CultureInfo ThaiCulture = new CultureInfo("th-TH");

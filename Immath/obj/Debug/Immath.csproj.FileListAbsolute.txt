@@ -57,9 +57,6 @@ D:\immath\Immath\bin\Debug\book_no.txt
 D:\immath\Immath\obj\Debug\Immath.refill.resources
 D:\immath\Immath\obj\Debug\Immath.csproj.ResolveComReference.cache
 D:\immath\Immath\bin\Debug\students.xlsx
-D:\immath\Immath\bin\Debug\ExcelApi.dll
-D:\immath\Immath\bin\Debug\NetOffice.dll
-D:\immath\Immath\bin\Debug\OfficeApi.dll
 D:\immath\Immath\bin\Debug\stdole.dll
 D:\immath\Immath\bin\Debug\ExcelApi.pdb
 D:\immath\Immath\bin\Debug\ExcelApi.xml
@@ -71,3 +68,4 @@ D:\immath\Immath\bin\Debug\users.xlsx
 D:\Immath\Immath\obj\Debug\Immath.CancelBill.resources
 D:\Immath\Immath\bin\Debug\studentr.xlsx
 D:\Immath\Immath\obj\Debug\Immath.S_Form.resources
+D:\Immath\Immath\bin\Debug\condb.txt

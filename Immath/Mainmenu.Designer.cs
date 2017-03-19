@@ -48,6 +48,7 @@
             this.button_report_student_by_id = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_code = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_register_student
@@ -141,6 +142,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(142, 20);
             this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label2
             // 
@@ -157,6 +159,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(142, 20);
             this.dateTimePicker2.TabIndex = 10;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // button_reportteacher
             // 
@@ -205,8 +208,9 @@
             this.button_calpermonth.Name = "button_calpermonth";
             this.button_calpermonth.Size = new System.Drawing.Size(100, 33);
             this.button_calpermonth.TabIndex = 15;
-            this.button_calpermonth.Text = "ตัดยอดรายเดือน";
+            this.button_calpermonth.Text = "ตัดยอด";
             this.button_calpermonth.UseVisualStyleBackColor = true;
+            this.button_calpermonth.Click += new System.EventHandler(this.button_calpermonth_Click);
             // 
             // button_report_student_by_id
             // 
@@ -234,10 +238,20 @@
             this.textBox_code.Size = new System.Drawing.Size(100, 20);
             this.textBox_code.TabIndex = 18;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "ยอดเงินสะสม";
+            // 
             // Mainmenu
             // 
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(643, 362);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_code);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button_report_student_by_id);
@@ -290,5 +304,6 @@
         private System.Windows.Forms.Button button_report_student_by_id;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_code;
+        private System.Windows.Forms.Label label4;
     }
 }
