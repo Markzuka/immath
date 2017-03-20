@@ -115,15 +115,63 @@ namespace Immath
 
         }
 
-        private void button_takephoto_Click(object sender, EventArgs e)
+        private async void button_takephoto_Click(object sender, EventArgs e)
         {
-            if(cam.IsRunning)
+            if (cam.IsRunning)
             {
                 cam.Stop();
                 RealPic.Image = Pic.Image;
+                try
+                {
+                    conn = new MySqlConnection(connection);
+                    conn.Open();
+                    string SQL = "UPDATE students SET Pic=?Pic where Code =?Code";
+                    MySqlCommand command = new MySqlCommand(SQL, conn);
+                    command.Parameters.AddWithValue("?Pic", Directory.GetCurrentDirectory().ToString() + "/Picture/" + textbox_Code.Text + ".jpg");
+                    command.Parameters.AddWithValue("?Code", textbox_Code.Text);
+                    command.ExecuteNonQuery();
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (rdr != null)
+                    {
+                        rdr.Close();
+                    }
+
+                    if (conn != null)
+                    {
+                        conn.Close();
+                    }
+                }
+                Bitmap varbmp = new Bitmap(RealPic.Image);
+                if(File.Exists(Directory.GetCurrentDirectory() + "/Picture/" + textbox_Code.Text + ".jpg"))
+                {
+                    try
+                    {
+                        System.GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        File.Delete(Directory.GetCurrentDirectory() + "/Picture/" + textbox_Code.Text + ".jpg");
+                    }
+                    catch (Exception)
+                    {
+                        // Ignore the failure and continue
+                    }
+
+                }     
+                varbmp.Save(Directory.GetCurrentDirectory() + "/Picture/" + textbox_Code.Text + ".jpg");
+                varbmp.Dispose();
+                varbmp = null;
+                RealPic.Dispose();
+                RealPic = null;
                 cam.Start();
             }
-           
+
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -301,6 +349,10 @@ namespace Immath
                     textbox_Code.Text = rdr["Code"].ToString();
                     label_THB.Text = rdr["THB"].ToString()+" THB";
                     dateTimePicker_DateOfBirth.Value = (DateTime)rdr["DateOfBirth"];
+                    if (File.Exists(rdr["Pic"].ToString()))
+                    {
+                        RealPic.Image = Image.FromFile(rdr["Pic"].ToString());
+                    }
                 }
                 else
                 {
